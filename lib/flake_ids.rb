@@ -1,5 +1,8 @@
 require "flake_ids/version"
+require "flake_ids/generator"
 
 module FlakeIds
-  # Your code goes here...
+  def self.generator
+    Thread.current[:flake_id_generator] ||= Generator.new
+  end
 end
